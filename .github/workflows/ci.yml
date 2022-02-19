@@ -33,9 +33,15 @@ jobs:
           name: initc3
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - run: nix-build -A fortanix-sgx-tools
-      - name: Shasum check
+      - name: Shasum check ftxsgx-elf2sgxs
         run: |
-          echo "411d70e17634d6ad54dcc7dbf40f61fab5dfc9626fd8120ce9fd2063561f44d5 *result/bin/ftxsgx-elf2sgx" | shasum --algorithm 512256 --binary --strict --check
+          echo "411d70e17634d6ad54dcc7dbf40f61fab5dfc9626fd8120ce9fd2063561f44d5 *result/bin/ftxsgx-elf2sgxs" | shasum --algorithm 512256 --binary --strict --check
+      - name: Shasum check ftxsgx-runner
+        run: |
+          echo "c5437c2bd13fbe2806ea51fd4c97e993d848ee86960302888b33319065e1a38c *result/bin/ftxsgx-runner" | shasum --algorithm 512256 --binary --strict --check
+      - name: Shasum check ftxsgx-runner-cargo
+        run: |
+          echo "a4775959992cb69ceb943c5374d54dbe077912763dbb9ff324f35a16f1a8d531 *result/bin/ftxsgx-runner-cargo" | shasum --algorithm 512256 --binary --strict --check
   build_sgxs-tools:
     runs-on: ubuntu-latest
     steps:
