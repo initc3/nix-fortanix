@@ -21,9 +21,9 @@ rustPlatform.buildRustPackage rec {
   cargoSha256 = "sha256-t+ASUOQZpG+O/plldyA8EcCslcRHvwPZZzyIgP2vr8g=";
 
   nativeBuildInputs = [
-    pkg-config
     clang_11
     llvmPackages_11.libclang.lib
+    pkg-config
     protobuf
     rust-bin.nightly."2021-11-04".default
   ];
