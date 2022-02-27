@@ -36,7 +36,6 @@
       with pkgs;
       {
         defaultPackage = rustPlatform.buildRustPackage rec {
-          #inherit buildInputs nativeBuildInputs LIBCLANG_PATH;
           inherit buildInputs nativeBuildInputs;
           pname = "fortanix-sgx-tools";
           version = "0.5.0";
@@ -50,7 +49,7 @@
         };
 
         devShell = mkShell {
-          inherit nativeBuildInputs LIBCLANG_PATH;
+          inherit nativeBuildInputs;
           buildInputs = [
             openssl.dev
             # for dev purposes
